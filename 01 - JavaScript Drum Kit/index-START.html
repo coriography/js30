@@ -5,7 +5,7 @@
   <title>JS Drum Kit</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body onkeypress="pressKey(event)">
+<body>
 
 
   <div class="keys">
@@ -73,14 +73,17 @@
   // play sound with corresponding data-key
 
 
-  // object.addEventListener("keypress", myScript);
+  window.addEventListener("keydown", pressKey);
 
   function pressKey(event) {
-    let userKey = event.key;
+    let userKey = event.keyCode;
 
-    if (userKey == "A" || userKey == "a") {
-      alert("You pressed A!")
-    }
+    // is there an el that matches keycode
+    const keyEl = document.querySelector(`.key[data-key="${userKey}"]`);
+    const keyAudio = document.querySelector(`audio[data-key="${userKey}"]`);
+    if (!keyAudio) return;
+    keyAudio.play();
+    keyAudio.currentTime = 0;
   }
 
 </script>
