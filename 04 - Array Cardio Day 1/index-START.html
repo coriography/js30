@@ -54,6 +54,18 @@
     
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+    // total = 
+    // current value = passed - year
+
+    function calcYears(total, current) {
+      console.log(current);
+      current = current['passed'] - current['year'];
+      console.log(current);
+      return total + current;
+    }
+
+    const inventorRoomies = inventors.reduce(calcYears, 0);
+    console.log(inventorRoomies);
 
     // 5. Sort the inventors by years lived
 
